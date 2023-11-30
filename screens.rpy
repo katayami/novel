@@ -9,6 +9,7 @@ init offset = -1
 ## Стили
 ################################################################################
 
+### Эмиль
 style default:
     properties gui.text_properties()
     language gui.language
