@@ -4,7 +4,7 @@
 define m = Character('Мага', color="#c8ffc8")
 define c = Character('Клауд', color="#9f25e6")
 define author = Character(None, kind=nvl)
-define z = Character('Запись', color="#34b7eb")
+define z = Character('Запись колдуна Кузя Лакомкин', color="#34b7eb")
 define zapiska = Character('Записка', color="#34b7eb")
 define snivinka = Character('Запись от рыбака Снивинка', color="#34b7eb")
 define ciri = Character('Цири', color="#c921cf")
@@ -22,6 +22,13 @@ init:
     $ left2 = Position(xalign =-0.2, yalign = 1.1)
     $ right2 = Position(xalign =1.2, yalign = 1.1)
     $ mid = Position(xalign =0.7, yalign = 1.2)
+    $ pos1 = Position(xalign = 0.3, yalign = 0.3)
+    $ pos2 = Position(xalign = 0.5, yalign = 0.3)
+    $ pos3 = Position(xalign = 0.7, yalign = 0.3)
+    $ pos4 = Position(xalign = 0.4, yalign = 0.3)
+    $ pos5 = Position(xalign = 0.6, yalign = 0.3)
+
+
 # Игра начинается здесь:
 label start:
 
@@ -72,8 +79,6 @@ label start:
     c "Начнем с простого. Бери камень и пойдем со мной."
 
     hide cloud3
-    with moveoutright
-
     hide maga2
     with moveoutright
 
@@ -97,8 +102,6 @@ label start:
     "Открывается список растений, Мага выбирает данные условия."
 
     hide maga1
-    with dissolve
-
     hide cloud3
     with dissolve
 
@@ -133,8 +136,6 @@ label act1:
     with fade
 
     show cloud3 at right2
-    with dissolve
-
     show maga2 at left2
     with dissolve
 
@@ -161,17 +162,41 @@ label act1:
     
     "— Перед Магой открывается программа с тремя монстрами —"
 
-    "— 1-ый монстр Паровик, 2-ой монстр Стеклянное сердце, 3-ий монстр Огромный тролль—"
+    show par at pos1
+    show heart at pos2
+    show troll at pos3
+    with dissolve
+
+    "— 1 монстр Паровик, 2 монстр Стеклянное сердце, 3 монстр Огромный тролль—"
 
     m "Так... Паровик - монстр превращающийся в пар... Атакует быстро с разных сторон. Ага... Тогда нужно себя максимально обезопасить и в первую очередь использовать заклинание защиты!"
 
     "—Мага вводит в компьютер 'Заклинания защиты', вылезают два заклинания с уровнем 'легкие'—"
 
+    hide par
+    hide heart
+    hide troll
+    with dissolve
+
+    show obolochka at pos4
+    show ricar at pos5
+    with dissolve
+
     m "Заклинания 'Кристальная оболочка' - защита в виде шара вокруг и 'Щит духа Рыцаря' - защита в виде щита направленного в сторону взгляда."
 
     m "Раз Паровик может нападать с разных сторон, то лучше использовать защиту вокруг. Так, это заклинание называлось..."
 
-    "—перед игроком выбор между 'Кристальная оболочка' и 'Щит духа Рыцаря'—"
+    menu:
+
+        "Как называлось заклинание?"
+
+        "Кристальная оболочка":
+
+            pass
+
+        "Щит духа Рыцаря":
+
+            pass
 
     m "Затем надо использовать заклинание чтобы остановить Паровика и вернуть его в простое состояние."
 
@@ -179,29 +204,61 @@ label act1:
 
     "—Мага вводит оглушающие атаки—"
 
+    hide obolochka
+    hide ricar
+    with dissolve
+
+    show paradoxo at pos2
+    with dissolve
+
     "—Выходит заклинание 'Парадоксо' - обездвиживает противника и делает его уязвимым к атакам.—"
 
     m "Я понял! Нужно использовать защищающее заклинание, чтобы обезопасить себя, а затем атаковать оглушающей атакой! А после можно уже использовать любые заклинания для атаки."
 
+    hide paradoxo
+    with dissolve
+
     m "Посмотрим про Стеклянное сердце."
+
+    show heart_big at pos2
+    with dissolve
 
     "—Описание: монстр в виде каменного голема с ледяным сердцем.—"
 
     m "Тогда надо просто атаками целиться в сердце!"
 
+    hide heart_big
+    with dissolve
+
+    show star at pos2
+    with dissolve
+
     "—Мага вводит точные атаки, выходит заклинание 'Маленькая звезда' - быстрая и точная атака.—"
 
     "—Мага вводит Огромный тролль—"
 
-    "—Большой тролль на маленьких ножках—"
-
-    m "Ага! Надо использовать заклинания чтобы сбить его с ног — поиск сильных заклинаний, выходит 'Воздушное цунами' - очень сильный порыв ветра в определенную область."
-
-    scene bg 4
-    
-    show maga2 at left2
+    hide star
     with dissolve
 
+    show troll_big at pos2
+    with dissolve
+
+    "—Большой тролль на маленьких ножках—"
+
+    m "Ага! Надо использовать заклинания чтобы сбить его с ног."
+    
+    hide troll_big
+    with dissolve
+
+    show cunami at pos2
+    with dissolve
+
+    "-Мага вводит сильные заклинания, выходит 'Воздушное цунами' - очень сильный порыв ветра в определенную область.-"
+
+    scene bg 4
+    with fade
+    
+    show maga2 at left2
     show cloud3 at right2
     with dissolve
 
@@ -264,8 +321,6 @@ label act1:
     with fade
 
     show cloud5 at right2
-    with dissolve
-
     show maga4 at left2
     with dissolve
 
@@ -286,8 +341,6 @@ label act1:
     m "Ну что ж, приступим!"
 
     hide maga4
-    with dissolve
-
     hide cloud5
     with dissolve
 
@@ -297,6 +350,9 @@ label act1:
     "Мага садится за компьютер."
 
     m "Первый артефакт называется 'Лунная лампа', посмотрим..."
+
+    show lampa at pos2
+    with dissolve
 
     "Мага вводит название и видит одну запись..."
 
@@ -311,8 +367,6 @@ label act1:
     with fade
 
     show cloud5 at right2
-    with dissolve
-    
     show maga4 at left2
     with dissolve
 
@@ -342,8 +396,6 @@ label act1:
     c "Для начала читай название чтобы хотя бы примерно понять суть артефакта."
 
     hide cloud5
-    with dissolve
-
     hide maga4
     with dissolve
 
@@ -353,6 +405,9 @@ label act1:
     zapiska "Игольчатый камень."
 
     "Мага вбивает в поиске на компьютере. Выходит одна запись."
+
+    show stone at pos2
+    with dissolve
 
     snivinka "Я выловил этот камень из озера Экзо, с виду он был простой, но взять его в руки было большой ошибкой..."
 
@@ -366,8 +421,6 @@ label act1:
     with fade
 
     show cloud5 at right2
-    with dissolve
-
     show maga4 at left2
     with dissolve
 
@@ -417,11 +470,9 @@ label act2:
     with fade
 
     show maga3 at left2
-    with dissolve
+    with moveinleft
 
-    show ciri3 at right2
-    with dissolve
-        
+    show ciri3 at right2 
     show pes at mid
     with dissolve
 
@@ -462,8 +513,6 @@ label act2:
     with fade
 
     show maga1 at left2
-    with dissolve
-
     show ciri3 at right2
     with dissolve
 
@@ -513,6 +562,11 @@ label act2:
 
            scene bg 9
            with fade
+
+           show maga2 at left2
+           show ciri2 at right2
+           show sokol1
+           with dissolve
 
            s "Король Ястреб, смотрите что я нашел."
 
@@ -617,8 +671,6 @@ label act3:
     with fade
 
     show maga3 at left2
-    with dissolve
-
     show ruslan2 at right2
     with dissolve
 
@@ -644,13 +696,9 @@ label act3:
     with fade
 
     show maga3 at left2
-    with dissolve
-
     show ruslan1 at right2
+    show ilya 
     with dissolve
-
-    # show ilya 
-    # with dissolve
 
     m "...А что такое этот датасайнс?"
 
@@ -671,8 +719,6 @@ label act3:
     m "Че..."
 
     hide maga3
-    with moveoutleft
-
     hide ruslan1
     with moveoutleft
 
@@ -680,8 +726,6 @@ label act3:
     with fade
 
     show maga1 at left2
-    with dissolve
-
     show ruslan3 at right2
     with dissolve
 
@@ -703,11 +747,7 @@ label act3:
     with fade
 
     show korol
-    with dissolve
-
-    show maga4 at left2
-    with dissolve
-
+    show maga3 at left2
     show ruslan5 at right2
     with dissolve
 
@@ -754,18 +794,19 @@ label act3:
             korol "Уходим!"
 
             hide korol
-            with dissolve
-
             hide sokol1
             with dissolve
 
             scene bg street
             with fade
 
-            show maga1 at left2
+            show maga2 at left2
             with dissolve
 
             m "Цири! Где ты?"
+
+            show ciri_slime
+            with dissolve
 
             slime "Абждувуву"
 
@@ -814,9 +855,10 @@ label act3:
 
             s "А это кстати твоя подружка, нашли ее в одном из миров... А теперь нам пора. Уходим!"
 
-            hide korol
+            show ciri_slime
             with dissolve
 
+            hide korol
             hide sokol1
             with dissolve
 
@@ -843,9 +885,8 @@ label act4:
     scene bg street
     with fade
 
+    show ciri_slime
     show maga2 at left2
-    with dissolve
-
     show ruslan4 at right2
     with dissolve
 
@@ -858,6 +899,9 @@ label act4:
     m "Ну что ж,  rialmo de confeceum!"
 
     "-Открывается портал в родной мир, куда телепортируется слизняк Цири-"
+
+    hide ciri_slime
+    with dissolve
 
     r "А ты уверен вообще что она таам выживет без нас, может ее кто раздавит?"
 
@@ -875,6 +919,13 @@ label act4:
     "Прошло 4 года."
 
     "Мага пришел на собеседование."
+
+    scene bg office
+    with fade
+
+    show rabota at right2
+    show maga4 at left2
+    with dissolve
 
     rabota "Ну что ж, в целом по описанию вы нам подходите, только нас смущает то, что мы не знаем кто вы, ваша история как будто началась только 4 года назад. Но это ладно, все решит небольшой опрос."
 
@@ -969,7 +1020,18 @@ label zero:
     scene bg dark
     with fade
 
-    "После собеседования Мага шёл домой. Переходя дорогу его сбивает машина."
+    "После собеседования Мага шёл домой."
+
+    scene bg road
+    with fade
+
+    show maga2 at right2
+    with dissolve
+
+    "Переходя дорогу Магу сбивает машина."
+
+    scene bg dark
+    with fade
 
     "Конец..."
     
@@ -980,8 +1042,6 @@ label final:
     scene bg room
 
     show ruslan1 at right2
-    with dissolve
-
     show maga2 at left2
     with dissolve
 
@@ -999,11 +1059,7 @@ label final:
     with fade
 
     show ruslan1 at right2
-    with dissolve
-
     show maga2 at left2
-    with dissolve
-
     show cloud3
     with dissolve
 
