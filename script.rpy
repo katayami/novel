@@ -32,9 +32,12 @@ init:
 # Игра начинается здесь:
 label start:
 
+    play music "calm1.ogg"
+
     scene bg dark
 
     '''Пролог'''
+
     '''{cps=25}Подросток Мага долгое время мечтал стать магом. Его путь только начинается и чтобы погрузиться в жизнь настоящего мага, он решил исследовать руины бывшего храма.'''
     scene bg 2
     with fade
@@ -129,6 +132,8 @@ label start:
 label act1:
 
     "Глава 1. Обучение."
+
+    play music "calm2.mp3"
 
     "На следующий день Мага вернулся к Клауду чтобы продолжить обучение."
 
@@ -278,6 +283,8 @@ label act1:
     show maga1 at left2
     with moveinleft
 
+    play music "vrag.mp3"
+
     "—Мага идет домой по тропинке и навстречу к нему выбегает гоблин с большой головой—"
 
     show goblin at right2
@@ -299,6 +306,8 @@ label act1:
             hide goblin
             with dissolve
 
+            stop music fadeout 1.0
+
             m "Я смог правильно оценить ситуацию и после анализа противника я успешно одолел его!"
 
         "Я залезу на дерево!":
@@ -307,6 +316,8 @@ label act1:
             
             hide goblin
             with dissolve
+
+            stop music fadeout 1.0
 
             m "Видимо мне предстоит еще многому научится.. На эти деньги я хотел купить себе еды!"
 
@@ -317,11 +328,13 @@ label act1:
 
     "На следующий день..."
 
+    play music "calm2.mp3"
+
     scene bg 5
     with fade
 
     show cloud5 at right2
-    show maga4 at left2
+    show maga3 at left2
     with dissolve
 
     c "Привет, юный маг! Сегодня я продолжу учить тебя, как использовать магию."
@@ -476,6 +489,8 @@ label act2:
     show pes at mid
     with dissolve
 
+    play music "vrag2.mp3"
+
     "Неизвестная девушка" "Помогите!"
 
     m "Надо что-то придумать."
@@ -515,6 +530,8 @@ label act2:
     show maga1 at left2
     show ciri3 at right2
     with dissolve
+
+    play music "strah.mp3"
 
     ciri "Как же здесь страшно. Может лучше пойдем отсюда?"
 
@@ -602,6 +619,8 @@ label act2:
            scene bg teleport
            with fade
 
+           stop music fadeout 1.0
+
            jump act3
 
 
@@ -631,6 +650,8 @@ label act2:
            scene bg teleport
            with fade
 
+           stop music fadeout 1.0
+
            jump act3
 
 label act3:
@@ -639,6 +660,8 @@ label act3:
     with fade
     
     "Глава 3."
+
+    play music "urfu.mp3"
 
     scene bg urfu
     with fade
@@ -695,6 +718,8 @@ label act3:
     scene bg room
     with fade
 
+    play music "ilya.mp3"
+
     show maga3 at left2
     show ruslan1 at right2
     show ilya 
@@ -728,6 +753,8 @@ label act3:
     show maga1 at left2
     show ruslan3 at right2
     with dissolve
+
+    play music "vrag1.mp3"
 
     m "Кажется камень в моей сумке вибрирует."
 
@@ -797,6 +824,8 @@ label act3:
             hide sokol1
             with dissolve
 
+            play music "calm1.ogg"
+
             scene bg street
             with fade
 
@@ -824,11 +853,6 @@ label act3:
             m "Это Цири..."
 
             r "Емае.. Ну ты это, не расстраивайся сильно, придумаем что-нибудь..."
-
-            scene bg dark
-            with fade
-
-            jump act4
 
         "Не отдавать камень.":
 
@@ -862,6 +886,8 @@ label act3:
             hide sokol1
             with dissolve
 
+            play music "calm1.ogg"
+
             show maga2 at right2
             with dissolve
 
@@ -871,24 +897,7 @@ label act3:
 
             m "Цири?"
 
-            slime "Абждувуву"
-
-            scene bg dark
-            with fade
-
-            jump act4
-
-    return
-
-label act4:
-
-    scene bg street
-    with fade
-
-    show ciri_slime
-    show maga2 at left2
-    show ruslan4 at right2
-    with dissolve
+            slime "Абждувуву"   
 
     m "Возможно, собрав частички магии на месте открытия порталов, у меня как-то получится отправить хотя бы Цири домой..."
 
@@ -910,6 +919,8 @@ label act4:
     scene bg dark
     with fade
 
+    stop music fadeout 1.0
+
     "В ожидании чуда, Руслан решил не терять возможности и пригласил своего друга в Уральский Федеральный Университет..."
 
     "Вместе они провели отличную студенческую жизнь. Мага стал настоящим магом данных в новом мире, и кажется, что у него не было причин возвращаться в свой мир, кроме как встретить свою возлюбленную..."
@@ -919,6 +930,8 @@ label act4:
     "Прошло 4 года."
 
     "Мага пришел на собеседование."
+
+    play music "sobes.mp3"
 
     scene bg office
     with fade
@@ -1013,6 +1026,8 @@ label act4:
 
 label zero:
 
+    play music "proval.mp3"
+
     rabota "Это ужасно, вы нам никуда не годитесь."
 
     m "Моя мечта… разрушена."
@@ -1040,6 +1055,8 @@ label zero:
 label final:
 
     scene bg room
+
+    play music "calm2.mp3"
 
     show ruslan1 at right2
     show maga2 at left2
@@ -1090,10 +1107,12 @@ label final:
     scene bg dark
     with fade
 
-    "Мага так и не смог стать магом данных в другом мире, но вернувшись домой, он и Клауд продолжили свое обучение."
-
-    "Мага обрел любовь всей своей жизни. Они с Цири сыграли роскошную свадьбу и жили долго и счастливо."
-
-    "Руслан нашел себе две кошко-девочки и жил долго и счастливее всех."
+    author '''{cps=25}Мага так и не смог стать магом данных в другом мире, но вернувшись домой, он и Клауд продолжили свое обучение.
+              \n\nМага обрел любовь всей своей жизни. Они с Цири сыграли роскошную свадьбу и жили долго и счастливо.
+              \n\nРуслан нашел себе две кошко-девочки и жил дольше и счастливее всех.{/cps}'''
+    
+    nvl clear
+    
+    author "\n\n\nМага - Путь мага. {w}Конец."
 
     return
