@@ -283,7 +283,7 @@ label act1:
     show maga1 at left2
     with moveinleft
 
-    play music "vrag1.mp3"
+    play music "vrag1.mp3" # fixed
 
     "—Мага идет домой по тропинке и навстречу к нему выбегает гоблин с большой головой—"
 
